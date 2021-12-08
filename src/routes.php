@@ -29,14 +29,19 @@ return function(App $app) {
         $email = $loginData['email'];
         $password = $loginData['password'];
         $user = User::where('email', $email)->firstOrFail();
-        if (password_verify($password, $user->password)) {
+        if (password_verify($password, $user->password_verify)) {
             throw new Exception('Hibás email vagy jelszó!');
         }
         $token = new Token();
         $token->user_id = $user->id;
         $token->token = bin2hex(random_bytes(64)); //16 os számrendszerben eltárol egy random 64 bájtos random szöveget
+        $token->save();
+        $response->getBody()->write(json_encode([
+            'email' => $user->email,
+            'token' => $token->token
+        ]));
         return $response
             ->withHeader('Content-Type', 'application/json')
-            ->withStatus(201);
+            ->withStatus(200);
     });
 };
