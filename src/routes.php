@@ -1,5 +1,6 @@
 <?php
 
+use Kilianmarcell\Login\Middlewares\AuthMiddleware;
 use Kilianmarcell\Login\Token;
 use Kilianmarcell\Login\User;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -55,5 +56,5 @@ return function(App $app) {
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(200);
         });
-    });
+    })->add(new AuthMiddleware());
 };
