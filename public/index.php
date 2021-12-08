@@ -1,6 +1,24 @@
 <?php
 
 use Slim\Factory\AppFactory;
+use Illuminate\Database\Capsule\Manager;
+
+// https://github.com/illuminate/database
+
+$db = new Manager();
+$db->addConnection([
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'database' => 'loginapp',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+]);
+
+$db->setAsGlobal();
+$db->bootEloquent();
 
 require __DIR__ . '/../vendor/autoload.php';
 
