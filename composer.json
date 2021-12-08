@@ -1,0 +1,13 @@
+{
+    "name": "kilianmarcell/login",
+    "require": {
+        "slim/slim": "^4.8",
+        "slim/psr7": "^1.4",
+        "illuminate/database": "^7.30"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kilianmarcell\\Login\\": "src/"
+        }
+    }
+}
