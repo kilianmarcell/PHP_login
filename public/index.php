@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+
 use Slim\Factory\AppFactory;
 use Illuminate\Database\Capsule\Manager;
 
@@ -19,8 +21,6 @@ $db->addConnection([
 
 $db->setAsGlobal();
 $db->bootEloquent();
-
-require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 

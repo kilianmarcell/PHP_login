@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
     // Ha a created_at / updated_at nélkül hoztuk létre:
-    protected $timestamps = false;
+    public $timestamps = false;
+
+    protected $visible = [ 'id', 'email' ];
 }
